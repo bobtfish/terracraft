@@ -34,9 +34,10 @@ resource "aws_iam_role_policy" "s3" {
         "s3:Get*",
         "s3:List*"
       ],
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.b.name}/*"
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.b.id}/*"
     }
   ]
 }
+EOF
 }
 

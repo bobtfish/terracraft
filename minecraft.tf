@@ -12,7 +12,7 @@ resource "aws_instance" "minecraft" {
         Name = "minecraft"
     }
     user_data = "${file(\"${path.module}/minecraft.conf\")}"
-    iam_instance_profile = "${aws_iam_instance_profile.test_profile.id}"
+    iam_instance_profile = "${aws_iam_instance_profile.minecraft.id}"
     provisioner "remote-exec" {
         inline = [
           "while sudo pkill -0 cloud-init; do sleep 2; done"
