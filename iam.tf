@@ -4,7 +4,7 @@ resource "aws_iam_instance_profile" "minecraft" {
 }
 
 resource "aws_iam_role" "role" {
-    name = "assume_role"
+    name = "minecraft"
     path = "/"
     assume_role_policy = <<EOF
 {
@@ -34,7 +34,8 @@ resource "aws_iam_role_policy" "s3" {
         "s3:Get*",
         "s3:List*"
       ],
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.b.id}/*"
+      "Resource": ["arn:aws:s3:::${aws_s3_bucket.b.id}",
+                "arn:aws:s3:::${aws_s3_bucket.b.id}/*"]
     }
   ]
 }
