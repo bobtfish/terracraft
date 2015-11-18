@@ -1,4 +1,4 @@
-.PHONEY: all ssh_key sshnat go integration
+.PHONEY: all ssh_key sshnat s3ls
 
 all: ssh_key .terraform variables.tf.json
 		true
@@ -7,9 +7,6 @@ all: ssh_key .terraform variables.tf.json
 	terraform apply
 	sleep 35
 	touch .terraform_applied
-
-integration: go .terraform_applied
-	ginkgo -v
 
 ssh:
 	ssh -A -i id_rsa ubuntu@$$(terraform output minecraft_public_ip)
@@ -36,4 +33,7 @@ destroy:
 	yes yes | terraform destroy
 
 realclean: .terraform destroy clean
+
+s3ls:
+	aws s3 ls s3://terracraft/
 
