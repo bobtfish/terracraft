@@ -2,7 +2,7 @@ resource "aws_instance" "minecraft" {
     lifecycle {
 #        prevent_destroy = true
     }
-    ami = "${module.ami.ami_id}"
+    ami = "ami-9f388eec"
     instance_type = "m3.large"
     source_dest_check = false
     key_name = "${aws_key_pair.awsnycast.key_name}"

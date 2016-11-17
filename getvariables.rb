@@ -9,7 +9,7 @@ output = {
     },
     "bucket_name" => {
         "description" => "The bucket name in s3",
-        "default" => "terracraft",
+        "default" => "terracraft2",
     },
   }
 }
